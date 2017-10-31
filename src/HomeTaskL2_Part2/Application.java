@@ -26,6 +26,8 @@ public class Application {
         System.out.println("\n Created HashMap from ArrayList \n");
         System.out.println(actions.convertStudentsListToMap(actions.getStudentsList() )+ "\n");
 
+        System.out.println("\n Filtered HashMap (StudentID >= 100)\n");
+        System.out.println(actions.filterByID(actions.convertStudentsListToMap(actions.getStudentsList())));
     }
 
 

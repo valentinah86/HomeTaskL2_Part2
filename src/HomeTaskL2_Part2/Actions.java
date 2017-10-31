@@ -1,15 +1,15 @@
 package HomeTaskL2_Part2;
 
+
 import java.util.*;
 
 public class Actions {
 
     private Random r = new Random();
     private ArrayList studentsList = new ArrayList<Students>();
-
+    private HashMap<Integer, Students> stListToMap = new HashMap<>();
 
     private int generateAge() {
-        //  Random r = new Random();
         int minAge = 16;
         int maxAge = 30;
         return r.nextInt(maxAge - minAge + 1) + minAge;
@@ -56,7 +56,7 @@ public class Actions {
     public ArrayList filterSurnameByFirstLetter(String letter, ArrayList<Students> studentsList) {
 
         ArrayList filteredList = new ArrayList<Students>();
-        String surname = "";
+        String surname;
 
         for (Students students : studentsList) {
 
@@ -87,14 +87,25 @@ public class Actions {
     }
 
     public HashMap <Integer,Students> convertStudentsListToMap (ArrayList<Students> studentsList){
-       Random r = new Random();
-       HashMap <Integer, Students> stListToMap = new HashMap<>();
 
        for (Students students: studentsList){
            stListToMap.put(r.nextInt(150), students);
        }
 
        return stListToMap;
+    }
+
+    public HashMap<Integer, Students> filterByID(HashMap<Integer, Students> stListToMap) {
+
+        HashMap<Integer, Students> filteredMap = new HashMap<>();
+
+        for (Map.Entry<Integer, Students> pair : stListToMap.entrySet()) {
+            int value = pair.getValue().getId();
+            if (value >= 100) {
+                filteredMap.put(pair.getKey(), pair.getValue());
+            }
+        }
+        return filteredMap;
     }
 
 
